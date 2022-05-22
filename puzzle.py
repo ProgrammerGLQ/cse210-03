@@ -29,7 +29,6 @@ def puzzle():
             else '-' for letter in word]
         print('Current word: ', ' '.join(word_list))
 
-
         user_letter = input('Please, guess a letter (a-z): ').lower()
         if user_letter in alphabet - user_used_letters:
             user_used_letters.add(user_letter)
