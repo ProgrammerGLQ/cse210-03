@@ -43,7 +43,7 @@ class Game:
         self._puzzle = puzzle
 
     def start_game(self):
-        print("Welcome to Jumper.")
+        print("\nWelcome to Jumper.")
         name = input('Hey, what is your name? ')
         self._player.set_name(name)
         self.make_guess()
@@ -55,14 +55,16 @@ class Game:
         if guess in self._secret_word:
             self.reveal_letter(guess)
             if is_solved(self._secret_word):
-                print('Won!')
+                print()
+                print(self.get_player().get_name() + ' Won!\n')
             else:
                 self.make_guess()
         else:
             self._player.get_parachute().dent_parachute()
             if self._player.get_parachute().get_status():
                 self._player.get_parachute().show()
-                print('GAME OVER!!')
+                print()
+                print(self.get_player().get_name() + ' GAME OVER!!\n')
             else:
                 self.make_guess()
 
