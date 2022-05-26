@@ -1,103 +1,29 @@
-class parachute:
+class Parachute:
     def __init__(self):
-        self.__parachute = ""
-    
-    def __get_parachute__(self, lifes):
-        if lifes == 8:
-            self.__parachute = """
-    ___    
-   /___\   
-   \   /   
-    \ /    
-     O     
-    /|\    
-    / \    
-    """
-        elif lifes == 7:
-            self.__parachute = """
-                    
-   /___\   
-   \   /   
-    \ /    
-     O     
-    /|\    
-    / \    
-    """
-        elif lifes == 6:
-            self.__parachute = """
-                    
-    ___\   
-   \   /   
-    \ /    
-     O     
-    /|\    
-    / \    
-    """
-        elif lifes == 5:
-            self.__parachute = """
-                    
-    ___   
-   \   /   
-    \ /    
-     O     
-    /|\    
-    / \    
-    """
-        elif lifes == 4:
-            self.__parachute = """
-                    
-           
-   \   /   
-    \ /    
-     O     
-    /|\    
-    / \    
-    """
-        elif lifes == 3:
-            self.__parachute = """
-                    
-            
-       /   
-    \ /    
-     O     
-    /|\    
-    / \    
-    """
-        elif lifes == 2:
-            self.__parachute = """
-                    
-             
-           
-    \ /    
-     O     
-    /|\    
-    / \    
-    """
-        elif lifes == 1:
-            self.__parachute = """
-                    
-            
-           
-    \       
-     O     
-    /|\    
-    / \    
-    """
-        elif lifes == 0:
-            self.__parachute = """
-                    
-               
-           
-            
-     x     
-    /|\    
-    / \    
-    """
-        return self.__parachute
-
-
-#           Testing
-#director = parachute()
-#print(director.__get_parachute__(3))
-       
-
+        self._lines = [
+            ' ___ ',
+            '/   \\',
+            ' ___ ',
+            '\\   /',
+            ' \\ / ',
+            '  0  ',
+            ' /|\\',
+            ' / \\ ',
+            '      ',
+            '^^^^^^^'
+        ]
+        self._is_spoilt = False
+    def get_status(self):
+        return self._is_spoilt
+    def set_status(self, status):
+        self._is_spoilt = status
+    def show(self):
+        for i in range(len(self._lines)):
+            print(self._lines[i])
+    def dent_parachute(self):
+        if len(self._lines) == 5:
+            self._lines[0] = '  X  '
+            self._is_spoilt = True
+        else:
+            del self._lines[0]
+            self._is_spoilt = False
